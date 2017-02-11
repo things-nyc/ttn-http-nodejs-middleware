@@ -12,5 +12,11 @@
     "ttn"
   ],
   "author": "Mimi Flynn",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.22.2",
+    "express": "^4.14.1",
+    "nodemon": "^1.11.0",
+    "request": "^2.79.0"
+  }
 }
