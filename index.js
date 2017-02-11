@@ -5,8 +5,12 @@ var bodyParser = require('body-parser');
 var app = express();
 var url = process.env.RECEIVING_URL;
 
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(bodyParser.json()); // for parsing application/json
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// for parsing application/json
+app.use(bodyParser.json());
+
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -21,14 +25,27 @@ app.get('/', function (req, res) {
 app.post('/ttn', function (req, res) {
   console.log('request');
   console.log(req.body);
-  res.send('eh?');
-//  request.post(url).form({
-//    hub: 'hubID',
-//    cell: 'cellName',
-//    time: 'timestamp',
-//    temp: 'temp',
-//    sp: 60
-//  });
+
+  var data = {
+    hub: req.body.hardware_serial,
+    cell: 'Test0000cell0003',
+    time: req.body.metadata.time,
+    temp: req.body.payload.tempC[0],
+    sp: 60
+  };
+
+  console.log('data');
+  console.log(data);
+
+  request.post(url).form({
+    hub: 'hubID',
+    cell: 'cellName',
+    time: 'timestamp',
+    temp: 'temp',
+    sp: 60
+  });
+
+  res.send('Success');
 });
 
 app.listen(4000, function () {
