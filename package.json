@@ -1,0 +1,16 @@
+{
+  "name": "heat-seek-node-middleware",
+  "version": "1.0.0",
+  "description": "TTN to Heat Seek middleware",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "ttn"
+  ],
+  "author": "Mimi Flynn",
+  "license": "MIT"
+}
